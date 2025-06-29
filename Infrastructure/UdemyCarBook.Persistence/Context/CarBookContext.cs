@@ -8,7 +8,7 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Persistence.Context
 {
-    public  class CarBookContext:DbContext
+    public class CarBookContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,5 +32,7 @@ namespace UdemyCarBook.Persistence.Context
         public DbSet<Service> Services { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
