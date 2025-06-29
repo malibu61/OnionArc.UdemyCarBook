@@ -16,8 +16,9 @@ namespace UdemyCarBook.WebAPI.Controllers
         private readonly UpdateCarHandler _updateCarHandler;
         private readonly RemoveCarHandler _removeCarHandler;
         private readonly GetCarByBrandQueryHandler _getCarByBrandQueryHandler;
+        private readonly GetLast5CarsWithBrandsQueryHandler _getLast5CarsWithBrandsQueryHandler;
 
-        public CarController(GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, CreateCarHandler createCarHandler, UpdateCarHandler updateCarHandler, RemoveCarHandler removeCarHandler, GetCarByBrandQueryHandler getCarByBrandQueryHandler)
+        public CarController(GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, CreateCarHandler createCarHandler, UpdateCarHandler updateCarHandler, RemoveCarHandler removeCarHandler, GetCarByBrandQueryHandler getCarByBrandQueryHandler, GetLast5CarsWithBrandsQueryHandler getLast5CarsWithBrandsQueryHandler)
         {
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
             _getCarQueryHandler = getCarQueryHandler;
@@ -25,6 +26,7 @@ namespace UdemyCarBook.WebAPI.Controllers
             _updateCarHandler = updateCarHandler;
             _removeCarHandler = removeCarHandler;
             _getCarByBrandQueryHandler = getCarByBrandQueryHandler;
+            _getLast5CarsWithBrandsQueryHandler = getLast5CarsWithBrandsQueryHandler;
         }
 
 
@@ -66,8 +68,16 @@ namespace UdemyCarBook.WebAPI.Controllers
         [HttpGet("CarListWBrand")]
         public async Task<IActionResult> CarListWBrand()
         {
-            var values = await _getCarByBrandQueryHandler.Handle(); // ✅ await eklendi
+            var values = await _getCarByBrandQueryHandler.Handle();
+            return Ok(values);
+        }
+
+        [HttpGet("Last5CarListWBrand")]
+        public async Task<IActionResult> Last5CarListWBrand()
+        {
+            var values = await _getLast5CarsWithBrandsQueryHandler.Handle();
             return Ok(values);
         }
     }
+
 }
