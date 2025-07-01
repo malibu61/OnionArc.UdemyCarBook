@@ -10,5 +10,6 @@ namespace UdemyCarBook.Application.Interfaces.BlogInterfaces
     public interface IBlogRepository
     {
         List<Blog> Last3BlogsWithAuthor();
+        List<Blog> AllBlogsWithAuthor();
     }
 }
