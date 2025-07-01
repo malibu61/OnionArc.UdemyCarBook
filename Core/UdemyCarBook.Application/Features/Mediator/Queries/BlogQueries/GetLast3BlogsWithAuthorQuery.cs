@@ -8,7 +8,7 @@ using UdemyCarBook.Application.Features.Mediator.Results.BlogResults;
 
 namespace UdemyCarBook.Application.Features.Mediator.Queries.BlogQueries
 {
-    public class GetBlogQuery : IRequest<List<GetBlogQueryResult>>
+    public class GetLast3BlogsWithAuthorQuery : IRequest<List<GetLast3BlogsWithAuthorQueryResult>>
     {
     }
 }

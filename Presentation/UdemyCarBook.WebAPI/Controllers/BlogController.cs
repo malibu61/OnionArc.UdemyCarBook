@@ -50,5 +50,12 @@ namespace UdemyCarBook.WebAPI.Controllers
             await _mediator.Send(new RemoveBlogCommand(id));
             return Ok("Silme İşlemi Başarılı");
         }
+
+        [HttpGet("GetLast3BlogsWithAuthor")]
+        public async Task<IActionResult> GetLast3BlogsWithAuthor()
+        {
+            var values= await _mediator.Send(new GetLast3BlogsWithAuthorQuery());
+            return Ok(values);
+        }
     }
 }
