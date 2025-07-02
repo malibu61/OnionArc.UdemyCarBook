@@ -11,11 +11,11 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers
 {
-    public class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, GetServiceByIdQueryResult>
+    public class GetTagCloudByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, GetServiceByIdQueryResult>
     {
         private readonly IRepository<Service> _repository;
 
-        public GetServiceByIdQueryHandler(IRepository<Service> repository)
+        public GetTagCloudByIdQueryHandler(IRepository<Service> repository)
         {
             _repository = repository;
         }

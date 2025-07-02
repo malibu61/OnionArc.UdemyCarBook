@@ -14,7 +14,7 @@ namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7274/api/Blogs/GetLast3BlogsWithAuthor");
+            var responseMessage = await client.GetAsync("https://localhost:7274/api/Blog/GetLast3BlogsWithAuthor");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

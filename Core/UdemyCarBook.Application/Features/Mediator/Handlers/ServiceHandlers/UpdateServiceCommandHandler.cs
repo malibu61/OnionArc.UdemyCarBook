@@ -10,11 +10,11 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers
 {
-    public class UpdateServiceCommandHandler : IRequestHandler<UpdateServiceCommand>
+    public class UpdateTagCloudCommandHandler : IRequestHandler<UpdateServiceCommand>
     {
         private readonly IRepository<Service> _repository;
 
-        public UpdateServiceCommandHandler(IRepository<Service> repository)
+        public UpdateTagCloudCommandHandler(IRepository<Service> repository)
         {
             _repository = repository;
         }

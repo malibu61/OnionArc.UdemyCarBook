@@ -10,6 +10,7 @@ namespace UdemyCarBook.Dto.BlogDtos
     {
         public int BlogID { get; set; }
         public string Title { get; set; }
+        public string Body { get; set; }
         public string AuthorName { get; set; }
         public string CategoryName { get; set; }
         public int AuthorID { get; set; }

@@ -3,18 +3,32 @@
 <div class="col-md-8 ftco-animate">
 
     <h2 class="mb-3">@Model.Title</h2>
-    <p>@Model.Description</p>
+    @* <p>@Model.Description</p> *@
+    <p><strong><em>@Model.Description</em></strong></p>
+    <br />
+
+    <div class="col-md-12 text-center d-flex ftco-animate">
+        <div class="blog-entry justify-content-end mb-md-5">
+            <a href="blog-single.html" class="block-20 img" style="background-image: url('@Model.CoverImageUrl'); height: 400px; background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </a>
+        </div>
+    </div>
+
+    <br />
+
+@*     <p>@Model.Body</p> *@
+    <p style="text-align: justify;">@Model.Body</p>
 
     @await Component.InvokeAsync("_BlogDetailCloudTagByBlogComponentPartial", new { id = ViewBag.blogid })
 
-    @await Component.InvokeAsync("_BlogDetailsAuthorAboutComponentPartial", new { id = ViewBag.blogid })
+    @*   @await Component.InvokeAsync("_BlogDetailsAuthorAboutComponentPartial", new { id = ViewBag.blogid }) *@
 
     <div class="pt-5 mt-5">
         <h3 class="mb-5">@ViewBag.commentCount Yorum</h3>
 
-        @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.blogid })
-
-        @*  @await Component.InvokeAsync("_AddCommentComponentPartial") *@
-        @await Html.PartialAsync("~/Views/Blog/AddComment.cshtml", new { id = ViewBag.blogid })
+        @*         @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.blogid })
+        *@
+        @* await Component.InvokeAsync("_AddCommentComponentPartial")  *@
+        @* @await Html.PartialAsync("~/Views/Blog/AddComment.cshtml", new { id = ViewBag.blogid }) *@
     </div>
 </div>
