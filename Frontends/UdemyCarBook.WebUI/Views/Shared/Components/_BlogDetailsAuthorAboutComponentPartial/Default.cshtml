@@ -1,15 +1,43 @@
 ﻿@using UdemyCarBook.Dto.BlogDtos
-@model List<GetAuthorByBlogAuthorIdDto>
+@model ResultGetBlogAndAuthorByBlogIdDto
 
-@foreach (var item in Model)
-{
-    <div class="about-author d-flex p-4 bg-light">
+@* @foreach (var item in Model)
+{ *@
+ @*    <div class="about-author d-flex p-4 bg-light">
         <div class="bio mr-5">
-            <img src="@item.AuthorImageUrl" alt="Image placeholder" class="img-fluid mb-4">
+            <img src="@Model.AuthorImageUrl" alt="Image placeholder" class="img-fluid mb-4">
         </div>
         <div class="desc">
-            <h3>@item.AuthorName</h3>
-            <p>@item.AuthorDescription</p>
+            <h3>@Model.AuthorName</h3>
+            <p>@Model.AuthorDescription</p>
         </div>
+    </div> *@
+@* } *@
+@* 
+<div class="about-author p-4 bg-light clearfix">
+    <img src="@Model.AuthorImageUrl" alt="Image placeholder" class="img-fluid mb-3 float-start me-4" style="max-width: 300px;">
+    <h3>@Model.AuthorName</h3>
+    <p>@Model.AuthorDescription</p>
+</div>
+ *@
+
+@* <div class="about-author bg-light p-4 clearfix" style="overflow: hidden;">
+    <img src="@Model.AuthorImageUrl" alt="@Model.AuthorName"
+         class="img-fluid float-start me-3 mb-2" style="max-width: 280px; border-radius: 8px;">
+
+    <div>
+        <h3 class="h5 fw-bold">@Model.AuthorName</h3>
+        <p style="text-align: justify; margin-bottom: 0;">@Model.AuthorDescription</p>
     </div>
-}
+</div>
+ *@
+
+<div class="about-author bg-light p-4 text-center">
+    <img src="@Model.AuthorImageUrl" alt="@Model.AuthorName"
+         class="img-fluid rounded mb-3 mx-auto d-block" style="max-width: 250px;">
+
+    <h3 class="h5 fw-bold">@Model.AuthorName</h3>
+    <p class="text-muted" style="text-align: justify; max-width: 700px; margin: 0 auto;">
+        @Model.AuthorDescription
+    </p>
+</div>

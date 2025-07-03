@@ -22,7 +22,19 @@ namespace UdemyCarBook.Persistence.Repositories.BlogRepository
 
         public List<Blog> AllBlogsWithAuthor()
         {
-            var values = _context.Blogs.Include(x => x.Author).Include(x=>x.Category).ToList();
+            var values = _context.Blogs.Include(x => x.Author).Include(x => x.Category).ToList();
+            return values;
+        }
+
+        public Blog GetBlogAndAuthorByBlogId(int id)
+        {
+            var values = _context.Blogs.Include(x => x.Author).Where(x => x.BlogID == id).FirstOrDefault();
+            return values;
+        }
+
+        public List<Blog> GetBlogByAuthorId(int id)
+        {
+            var values = _context.Blogs.Include(x => x.Author).Include(x => x.Category).Where(x => x.AuthorID == id).ToList();
             return values;
         }
 
