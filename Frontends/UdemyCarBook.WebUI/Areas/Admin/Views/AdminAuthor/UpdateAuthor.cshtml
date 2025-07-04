@@ -1,0 +1,38 @@
+﻿@using UdemyCarBook.Dto.AuthorDto
+@model UpdateAuthorDto
+
+@{
+    ViewData["Title"] = "UpdateAuthor";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yazar Bilgisi Güncelleme Sayfası</h4>
+                        <p class="card-subtitle mb-4">Yazar alanına güncellemek istediğiniz veri girişini aşağıdaki panelden yapabilirsiniz.</p>
+                        <form method="post">
+                            @Html.HiddenFor(x => x.AuthorID)
+                            <div class="form-group">
+                                <label for="exampleInputName">Ad Soyad</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Ad Soyad Giriniz" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputDescription">Açıklama</label>
+                                @Html.TextBoxFor(x => x.Description, new { @class = "form-control", placeholder = "Açıklama Giriniz" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImageUrl">Yazar Görsel</label>
+                                @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", placeholder = "Yazar Görsel URL Bilgisini Giriniz" })
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Yazarı Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
