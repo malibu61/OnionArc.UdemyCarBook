@@ -26,6 +26,8 @@ using UdemyCarBook.Application.Interfaces.AuthorInterfaces;
 using UdemyCarBook.Persistence.Repositories.AuthorRepositories;
 using UdemyCarBook.Application.Interfaces.StatisticsInterfaces;
 using UdemyCarBook.Persistence.Repositories.StatisticsRepositories;
+using UdemyCarBook.Application.Interfaces.RentACarInterfaces;
+using UdemyCarBook.Persistence.Repositories.RentACarRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +44,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepositor
 builder.Services.AddScoped(typeof(ILocationRepository), typeof(LocationRepository));
 builder.Services.AddScoped(typeof(IAuthorRepository), typeof(AuthorRepository));
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
+builder.Services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
 
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
 builder.Services.AddScoped<GetAboutQueryHandler>();

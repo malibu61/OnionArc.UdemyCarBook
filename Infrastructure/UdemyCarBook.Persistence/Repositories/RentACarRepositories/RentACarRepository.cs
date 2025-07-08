@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -21,7 +22,7 @@ namespace UdemyCarBook.Persistence.Repositories.RentACarRepositories
 
         public List<RentACar> GetByFilterAsync(Expression<Func<RentACar, bool>> filter)
         {
-            var values = _context.RentACars.Where(filter);
+            var values = _context.RentACars.Where(filter).Include(x => x.Car).ThenInclude(x => x.Brand).Include(x => x.Car).ThenInclude(c => c.CarPricings);
             return values.ToList();
         }
     }

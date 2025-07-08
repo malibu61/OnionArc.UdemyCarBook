@@ -1,4 +1,5 @@
-﻿@* ﻿@model UdemyCarBook.Dto.LocationDtos.ResultLocationDto *@
+﻿@using UdemyCarBook.Dto.LocationDto
+@model ResultLocationDto
 @{
     ViewData["Title"] = "Index";
     Layout = null;
@@ -39,7 +40,7 @@
                                 <h2>Şimdi Aracınızı Kiralayın</h2>
                                 <div class="form-group">
                                     <label for="" class="label">Alınacak Lokasyon</label>
-                                   @*  @Html.DropDownListFor(x => x.LocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop" }) *@
+                                    @Html.DropDownListFor(x => x.LocationID, (List<SelectListItem>)ViewBag.locations, new { @class = "form-control", @id = "drop" })
                                 </div>
 
                                 <div class="d-flex">
