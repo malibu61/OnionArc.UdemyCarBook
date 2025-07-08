@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Frontends\UdemyCarBook.Dto\UdemyCarBook.Dto.csproj" />
     <ProjectReference Include="..\..\Infrastructure\UdemyCarBook.Persistence\UdemyCarBook.Persistence.csproj" />
   </ItemGroup>
 

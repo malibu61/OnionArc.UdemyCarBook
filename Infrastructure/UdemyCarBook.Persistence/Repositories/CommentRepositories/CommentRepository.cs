@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -42,6 +43,12 @@ namespace UdemyCarBook.Persistence.Repositories.CommentRepositories
         public Comment GetById(int id)
         {
             var values = _context.Comments.Find(id);
+            return values;
+        }
+
+        public List<Comment> GetCommentByBlogId(int id)
+        {
+            var values = _context.Comments.Include(x => x.Blog).Where(x => x.BlogID == id).ToList();
             return values;
         }
 

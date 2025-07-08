@@ -19,6 +19,11 @@ namespace UdemyCarBook.Persistence.Repositories.CarRepositories
             _context = context;
         }
 
+        public int GetCarCount()
+        {
+            return _context.Cars.Count();
+        }
+
         public List<Car> GetCarsWithBrands()
         {
             var values = _context.Cars.Include(x => x.Brand).ToList();

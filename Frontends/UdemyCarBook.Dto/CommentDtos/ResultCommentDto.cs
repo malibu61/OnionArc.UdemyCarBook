@@ -13,5 +13,6 @@ namespace UdemyCarBook.Dto.CommentDtos
         public DateTime CreatedDate { get; set; }
         public string Description { get; set; }
         public int BlogID { get; set; }
+        public string BlogName { get; set; }
     }
 }

@@ -13,5 +13,6 @@ namespace UdemyCarBook.Application.Features.RepositoryDesign
         void Update(T entity);
         void Remove(int id);
         T GetById(int id);
+        List<T> GetCommentByBlogId(int id);
     }
 }

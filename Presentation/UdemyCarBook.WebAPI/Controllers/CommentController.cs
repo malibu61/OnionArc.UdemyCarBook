@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UdemyCarBook.Application.Features.RepositoryDesign;
 using UdemyCarBook.Domain.Entities;
+using UdemyCarBook.Dto.CommentDtos;
 
 namespace UdemyCarBook.WebAPI.Controllers
 {
@@ -49,6 +50,22 @@ namespace UdemyCarBook.WebAPI.Controllers
         {
             _genericRepository.Remove(id);
             return Ok("Silme Başarılı");
+        }
+
+        [HttpGet("GetCommentByBlogId")]
+        public async Task<IActionResult> GetCommentByBlogId(int id)
+        {
+            var values = _genericRepository.GetCommentByBlogId(id);
+
+            return Ok(values.Select(x => new ResultCommentDto
+            {
+                BlogID = x.BlogID,
+                BlogName = x.Blog.Title,
+                CommentID = x.CommentID,
+                CreatedDate = x.CreatedDate,
+                Description = x.Description,
+                Name = x.Name
+            }));
         }
     }
 }
