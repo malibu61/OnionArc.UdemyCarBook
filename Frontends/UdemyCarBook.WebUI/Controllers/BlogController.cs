@@ -27,16 +27,12 @@ namespace UdemyCarBook.WebUI.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> BlogDetail(int id=1)
+        public async Task<IActionResult> BlogDetail(int id = 1)
         {
             ViewBag.v1 = "Bloglar";
             ViewBag.v2 = "Blog Detayı ve Yorumlar";
             ViewBag.blogid = id;
-
-            //var client = _httpClientFactory.CreateClient();
-            //var responseMessage2 = await client.GetAsync($"https://localhost:7274/api/Comments/CommentCountByBlog?id=" + id);
-            //var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
-            ViewBag.commentCount = "jsonData2";
+            ViewBag.commentCount = "Alakalı";
             return View();
         }
 
@@ -53,10 +49,10 @@ namespace UdemyCarBook.WebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createCommentDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7274/api/Comments/CreateCommentWithMediator", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7274/api/Comment/CreateCommentByMediator", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Default");
+                return RedirectToAction("BlogDetail", "Blog", new { id = createCommentDto.BlogID });
             }
             return View();
         }
