@@ -22,6 +22,8 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers
         public async Task<List<GetLast5CarsWithBrandsQueryResult>> Handle()
         {
             var values = _repository.GetLast5CarsWithBrands();
+
+
             return values.Select(x => new GetLast5CarsWithBrandsQueryResult
             {
                 BigImageUrl = x.BigImageUrl,
@@ -34,7 +36,8 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers
                 Km = x.Km,
                 Transmission = x.Transmission,
                 Seat = x.Seat,
-                Luggage = x.Luggage
+                Luggage = x.Luggage,
+                Amount = x.CarPricings.Where(y => y.PricingID == 2 && y.CarID == x.CarID).FirstOrDefault()?.Amount ?? 0
 
             }).ToList();
         }

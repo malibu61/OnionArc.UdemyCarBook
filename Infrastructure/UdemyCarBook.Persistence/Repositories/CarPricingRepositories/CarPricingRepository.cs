@@ -24,5 +24,20 @@ namespace UdemyCarBook.Persistence.Repositories.CarPricingRepositories
             var values = _context.CarPricings.Include(x => x.Car).ThenInclude(x => x.Brand).Include(x => x.Pricing).Where(x => x.PricingID == 2).ToList();
             return values;
         }
+
+        public List<CarPricing> GetCarsWithPricingWTimePeriod()
+        {
+            //var values = _context.CarPricings.Include(x => x.Car).ThenInclude(x => x.Brand).ToList();
+            //return values;
+            var values = _context.CarPricings
+                                            .Include(x => x.Car)
+                                            .ThenInclude(x => x.Brand)
+                                            .AsEnumerable() // LINQ to Objects'a geçiyoruz
+                                            .GroupBy(x => x.CarID)
+                                            .Select(g => g.First()) // Her araç için sadece ilk fiyat kaydını al
+                                            .ToList();
+
+            return values;
+        }
     }
 }

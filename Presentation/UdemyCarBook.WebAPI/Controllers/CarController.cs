@@ -17,8 +17,11 @@ namespace UdemyCarBook.WebAPI.Controllers
         private readonly RemoveCarHandler _removeCarHandler;
         private readonly GetCarByBrandQueryHandler _getCarByBrandQueryHandler;
         private readonly GetLast5CarsWithBrandsQueryHandler _getLast5CarsWithBrandsQueryHandler;
+        private readonly GetCarWithBrandByCarIdQueryHandler _getCarWithBrandByCarIdQueryHandler;
 
-        public CarController(GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, CreateCarHandler createCarHandler, UpdateCarHandler updateCarHandler, RemoveCarHandler removeCarHandler, GetCarByBrandQueryHandler getCarByBrandQueryHandler, GetLast5CarsWithBrandsQueryHandler getLast5CarsWithBrandsQueryHandler)
+
+
+        public CarController(GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, CreateCarHandler createCarHandler, UpdateCarHandler updateCarHandler, RemoveCarHandler removeCarHandler, GetCarByBrandQueryHandler getCarByBrandQueryHandler, GetLast5CarsWithBrandsQueryHandler getLast5CarsWithBrandsQueryHandler, GetCarWithBrandByCarIdQueryHandler getCarWithBrandByCarIdQueryHandler)
         {
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
             _getCarQueryHandler = getCarQueryHandler;
@@ -27,6 +30,7 @@ namespace UdemyCarBook.WebAPI.Controllers
             _removeCarHandler = removeCarHandler;
             _getCarByBrandQueryHandler = getCarByBrandQueryHandler;
             _getLast5CarsWithBrandsQueryHandler = getLast5CarsWithBrandsQueryHandler;
+            _getCarWithBrandByCarIdQueryHandler = getCarWithBrandByCarIdQueryHandler;
         }
 
 
@@ -78,6 +82,15 @@ namespace UdemyCarBook.WebAPI.Controllers
             var values = await _getLast5CarsWithBrandsQueryHandler.Handle();
             return Ok(values);
         }
+
+        [HttpGet("GetCarWithBrandByCarId")]
+        public async Task<IActionResult> GetCarWithBrandByCarId(int id)
+        {
+            var values = await _getCarWithBrandByCarIdQueryHandler.Handle(new GetCarWithBrandByCarIdQuery(id));
+            return Ok(values);
+        }
+
+
     }
 
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UdemyCarBook.Application.Features.CQRS.Results.CarResults
 {
-    public class GetLast5CarsWithBrandsQueryResult
+    public class GetCarWithBrandByCarIdQueryResult
     {
         public int CarID { get; set; }
         public int BrandID { get; set; }
@@ -19,6 +19,5 @@ namespace UdemyCarBook.Application.Features.CQRS.Results.CarResults
         public byte Luggage { get; set; }
         public string Fuel { get; set; }
         public string BigImageUrl { get; set; }
-        public decimal Amount { get; set; }
     }
 }
