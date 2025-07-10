@@ -12,6 +12,7 @@ namespace UdemyCarBook.Application.Interfaces.CarFeatureInterfaces
         List<CarFeature> GetCarFeaturesByCarID(int carId);
         void ChangeCarFeatureAvailableToTrue(int carId, int carFeatureId);
         void ChangeCarFeatureAvailableToFalse(int carId, int carFeatureId);
-        void AssingCarFeatureAvailableToNewOne(int carId, int carFeatureId,bool available);
+        void AssingCarFeatureAvailableToNewOne(int carId, int carFeatureId, bool available);
+        List<int> WhenFeatureCreatedAddToAllCarsOnCarFeaturesByFalse();
     }
 }

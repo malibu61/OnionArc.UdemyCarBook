@@ -49,5 +49,11 @@ namespace UdemyCarBook.Persistence.Repositories.CarFeatureRepositories
             var values = _context.CarFeatures.Include(x => x.Feature).Include(x => x.Car).ThenInclude(x => x.Brand).Where(x => x.CarID == carId).ToList();
             return values;
         }
+
+        public List<int> WhenFeatureCreatedAddToAllCarsOnCarFeaturesByFalse()
+        {
+            var values = _context.CarFeatures.Select(x => x.CarID).Distinct().ToList();
+            return values;
+        }
     }
 }
