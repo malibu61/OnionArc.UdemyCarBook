@@ -1,0 +1,36 @@
+﻿@using UdemyCarBook.Dto.FeatureDtos
+@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"> Araca Ait Özellikler Atama Sayfası</h4>
+                        <p class="card-subtitle mb-4">
+                            Araca ait özellik tanımlaması yapılacak sayfadır.
+                        </p>
+                        <form method="post" asp-controller="AdminCarFeatureDetail" asp-action="Index">
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <div class="form-check">
+                                    <input type="hidden" name="[@i].FeatureID" value="@Model[i].FeatureID"/>
+                                    <input type="checkbox" name="[@i].Available" class="form-check-input" value="true" ) />
+                                    <label class="form-check-label">@Model[i].Name</label>
+                                </div>
+                            }
+
+                            <br />
+                            <button class="btn btn-success">Özellik Ata</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

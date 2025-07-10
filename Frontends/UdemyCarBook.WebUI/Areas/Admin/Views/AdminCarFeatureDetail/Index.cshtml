@@ -1,0 +1,48 @@
+﻿@using UdemyCarBook.Dto.CarFeatureDtos
+@model List<ResultCarFeatureByCarIdDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"> <h2> @Model[0].BrandName @Model[0].CarName </h2>Araca Ait Özellikler Listesi</h4>
+                        <p class="card-subtitle mb-4">
+                            Araca ait özellik eklemesi yapabilir,mevcut özellikleri kaldırabilir, ilgili güncellemeleri gerçekleştirebilirsiniz.
+                        </p>
+                        <form method="post">
+                            @*  @for (int i = 0; i < Model.Count; i++)
+                            {
+                            <div class="form-check">
+                            <input type="hidden" name="@Model[i].CarFeatureID" />
+                            <input type="hidden" name="@Model[i].FeatureName" />
+                            <input type="checkbox" name="@Model[i].Available" class="form-check-input" />
+                            <label class="form-check-label" for="@Model[i].Available">@Model[i].FeatureName</label>
+                            </div>
+                            } *@
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <div class="form-check">
+                                    <input type="hidden" name="[@i].CarFeatureID" value="@Model[i].CarFeatureID" />
+                                    <input type="hidden" name="[@i].FeatureID" value="@Model[i].FeatureID" />
+                                        <input type="hidden" name="[@i].CarID" value="@Model[i].CarID" />
+                                        <input type="hidden" name="[@i].FeatureName" value="@Model[i].FeatureName" />
+                                        <input type="checkbox" name="[@i].Available" class="form-check-input" value="true" @(Model[i].Available ? "checked" : "") />
+                                        <label class="form-check-label">@Model[i].FeatureName</label>
+                                    </div>
+                                }
+
+                                <br />
+                                <button class="btn btn-success">Değişiklikleri Kaydet</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
