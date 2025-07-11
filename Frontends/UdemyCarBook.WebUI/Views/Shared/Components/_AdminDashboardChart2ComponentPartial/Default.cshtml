@@ -1,0 +1,58 @@
+﻿@using Newtonsoft.Json
+@using UdemyCarBook.Dto.CarDtos
+
+@model List<ResultCarBrandChartDto>
+
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title d-inline-block">Araç Marka Sayıları</h4>
+            <div style="height:300px;">
+                <canvas id="my2Chart" height="450px"></canvas>
+            </div>
+            <div class="row text-center mt-4">
+                <div class="col-6">
+                    <h4>@Model.Sum(x => x.Count)</h4>
+                    <p class="text-muted mb-0">Araç Sayısı</p>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.Count</h4>
+                    <p class="text-muted mb-0">Marka Sayısı</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+            const labels = @Html.Raw(JsonConvert.SerializeObject(Model.Select(x => x.BrandName)));
+            const data = @Html.Raw(JsonConvert.SerializeObject(Model.Select(x => x.Count)));
+
+            function getRandomColor(opacity) {
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+                return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+            }
+
+            const backgroundColors = labels.map(() => getRandomColor(0.5));
+            const borderColors = backgroundColors.map(c => c.replace("0.7", "1"));
+
+            new Chart(document.getElementById('my2Chart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Marka Sayısı",
+                        data: data,
+                        backgroundColor: backgroundColors,
+                        borderColor: borderColors,
+                        borderWidth: 1
+                    }]
+                }
+            });
+</script>
+
+
