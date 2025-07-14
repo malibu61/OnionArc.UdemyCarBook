@@ -1,0 +1,41 @@
+﻿@using UdemyCarBook.Dto.CarFeatureDtos
+@model List<ResultCarFeatureByCarIdDto>
+
+<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+    <div class="row">
+        @{
+            for (int i = 0; i < Model.Count; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    if (i != 0)
+                    {
+                        @:</ul>
+                        @:</div>
+                    }
+
+                    @:<div class="col-md-4">
+                    @:<ul class="features">
+                }
+
+                var item = Model[i];
+
+                if (item.Available)
+                {
+                    <li class="check"><span class="ion-ios-checkmark"></span> @item.FeatureName</li>
+                }
+                else
+                {
+                    <li class="remove"><span class="ion-ios-close"></span> @item.FeatureName</li>
+                }
+            }
+
+            // Son grup kapama
+            if (Model.Count > 0)
+            {
+                @:</ul>
+                @:</div>
+            }
+        }
+    </div>
+</div>
