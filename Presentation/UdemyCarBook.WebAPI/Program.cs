@@ -36,6 +36,7 @@ using UdemyCarBook.Application.Interfaces.CarDescriptionInterfaces;
 using UdemyCarBook.Persistence.Repositories.CarDescriptionRepositories;
 using UdemyCarBook.Application.Interfaces.ReviewInterfaces;
 using UdemyCarBook.Persistence.Repositories.ReviewRepositories;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +109,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddFluentValidation(); 
+
 
 var app = builder.Build();
 
