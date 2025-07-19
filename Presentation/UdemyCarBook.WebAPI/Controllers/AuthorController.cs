@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UdemyCarBook.Application.Features.Mediator.Commands.AuthorCommands;
 using UdemyCarBook.Application.Features.Mediator.Queries.AuthorQueries;
 
 namespace UdemyCarBook.WebAPI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthorController : ControllerBase

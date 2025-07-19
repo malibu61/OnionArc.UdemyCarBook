@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!-- jQuery (Google CDN üzerinden) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Bootstrap Bundle (Bootstrap resmi CDN üzerinden) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Kendi site.js dosyan varsa yine localde -->
+<script src="/js/site.js" asp-append-version="true"></script>
+
+<!-- SignalR (Microsoft'un resmi CDN'inden) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.6/signalr.min.js"></script>
+
+
+
+<script type="text/javascript">
+	$(document).ready(() => {
+		var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7274/CarHub").build();
+		connection.start().then(() => {
+			setInterval(() => {
+				connection.invoke("SendStatistic");	// invoke edeceğimiz metod. hub'daki metodumuzun adı
+			}, 1000); //1 sn'de bir yenile
+		});
+
+		connection.on("ReceiveCarCount", (value) => {
+			$("#carcount").text(value);
+		});
+	});
+</script>
+
+<h1>Index</h1>
+<div id="carcount"></div>
+

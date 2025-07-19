@@ -5,7 +5,6 @@ using UdemyCarBook.Dto.StatisticsDtos;
 namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/AdminStatistics")]
     public class AdminStatisticsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
