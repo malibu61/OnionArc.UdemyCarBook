@@ -1,8 +1,7 @@
-I completed full-stack project based on a comprehensive 38.5-hour Udemy course by Murat Yücedağ, titled "Real-World BookCar with ASP.NET Core API 8.0 Onion Architecture" offered by M&Y Yazılım Eğitim Akademi Danışmanlık
-
-The course focuses on building a Car Rental System using modern architectural patterns and technologies — and I took it as an opportunity to build something solid and real.
-
 🚗 Project: BookCar – Car Rental System
+
+I completed a full-stack project, BookCar, a real-world Car Rental System built with ASP.NET Core API 8.0 and Onion Architecture. The project focuses on applying modern architectural patterns and technologies to create a robust, scalable solution — a hands-on experience that helped me strengthen my skills in both backend and frontend development.
+
 This project was built using Onion Architecture and designed with scalable, testable, and maintainable principles in mind.
 
 💡 What I’ve Implemented
